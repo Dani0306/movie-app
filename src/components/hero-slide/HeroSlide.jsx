@@ -28,8 +28,10 @@ useEffect(() => {
         const params = { page: 1 }
         try{
             const response = await tmbdApi.getMoviesList(movieType.popular, { params });
-            for(let i = 0; i < 3; i++){
-                setMovieItems(prev => [...prev, response.results[getRamdom()[i]]])
+            if(response.results){
+                for(let i = 0; i < 3; i++){
+                    setMovieItems(prev => [...prev, response.results[getRamdom()[i]]])
+                }
             }
         } catch (e){
             console.log(e)
